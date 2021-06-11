@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {User} from "../../models/User";
 
 @Component({
@@ -9,4 +9,11 @@ import {User} from "../../models/User";
 export class UserComponent {
   @Input()
   user: User
+
+  @Output()
+  liftUserDetails = new EventEmitter();
+
+  showUsersDetails() {
+    this.liftUserDetails.emit(this.user);
+  }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DataTransferService} from "./services";
+import {User} from "./models/User";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  user = 'anonymous';
+  user: User;
+  userDetails: User;
+
+  constructor(private dataTransfer: DataTransferService) {
+    dataTransfer.store.subscribe(value => this.user = value.userName);
+  }
+
+  setUserDetails(user: User) {
+    this.userDetails = user;
+  }
 }

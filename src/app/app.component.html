@@ -2,7 +2,7 @@
   <p>{{user}}</p>
 </div>
 
-<app-users></app-users>
+<app-users (liftUserDetails)="setUserDetails($event)"></app-users>
 <hr>
 
-<app-user-details></app-user-details>
+<app-user-details [user]="userDetails"></app-user-details>
